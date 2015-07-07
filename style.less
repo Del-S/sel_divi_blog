@@ -10,10 +10,36 @@ Template: divi
 
 @import url("../divi/style.css");
 
+/* Common */
+a { 
+    color: #ec008c; 
+    &:hover { color: #c90077; }
+}
+
+
 /* Header */
 #main-header { 
+    background-color: black;
     
+    #top-menu {
+        li a { color: white; }
+        li.current-menu-item a { font-weight: bold; }
+        li a:hover { color: #ec008c; }
+    }
     
     #et-top-navigation, .et-social-icons { float: left; }
     #et-top-social { float: right; }
+    
+    .et-social-icons li { margin-left: 0; }
+    .et-social-icon a:before { content: none; }
+    
+    #et_top_search {
+        margin-top: 5px;
+        width: initial;
+        #et_search_icon_el { height: 17px; width: 17px; background: none; padding: 0; right: 10px; top: 9px; font-size: 17px; position: absolute; cursor: pointer; color: #888;
+            font-family: 'ETmodules'; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        .et-search-form { position: initial; border: none; padding: 0; display: inline-block !important; box-shadow: none; -moz-box-shadow: none; -webkit-box-shadow: none; 
+            input { width: 190px; padding: 10px; padding-right: 30px; }
+        }
+    }
 }
