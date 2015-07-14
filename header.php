@@ -33,6 +33,22 @@
 	</script>
 
 	<?php wp_head(); ?>
+    
+    <link rel="shortcut icon" href="<?php echo esc_url( home_url( '/' ) ); ?>favicon.ico">
+
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-53540647-1', 'auto');
+		ga('set', 'forceSSL', true);
+		ga('set', 'anonymizeIp', true);
+		ga('require', 'displayfeatures');
+		ga('require', 'linkid', 'linkid.js');
+		ga('send', 'pageview');
+	</script>
+    
 </head>
 <body <?php body_class(); ?>>
 	<div id="page-container">
@@ -116,17 +132,8 @@
 		</div> <!-- #top-header -->
 	<?php endif; // true ==== $et_top_info_defined ?>
 
-		<header id="main-header" class="<?php echo esc_attr( $primary_nav_class ); ?>">
+		<header id="main-header-block" class="<?php echo esc_attr( $primary_nav_class ); ?>">
 			<div class="container clearfix">
-			<?php
-				/*$logo = ( $user_logo = et_get_option( 'divi_logo' ) ) && '' != $user_logo
-					? $user_logo
-					: $template_directory_uri . '/images/logo.png';
-			?/>
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-					<img src="<?php echo esc_attr( $logo ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" id="logo" />
-				</a>
-                */?>
 
 				<div id="et-top-navigation">
 					<nav id="top-menu-nav">
@@ -168,7 +175,7 @@
                 <div id="et-top-social">
                 <?php 
                 if ( false !== et_get_option( 'show_footer_social_icons', true ) ) {
-				    get_template_part( 'includes/social_icons', 'footer' );
+				    get_template_part( 'includes/social_icons', 'header' );
 				}
                 ?>
                 
@@ -190,5 +197,26 @@
                 
 			</div> <!-- .container -->
 		</header> <!-- #main-header -->
+        
+        <div id="logo-area-block">
+            <div class="pic-right"></div>
+            <div class="pic-left"></div>
+            <div class="logo-container">
+                <div class="container">
+                    <div id="logo-area">
+                    <?php
+                        $logo = ( $user_logo = et_get_option( 'divi_logo' ) ) && '' != $user_logo
+                           ? $user_logo
+                           : $template_directory_uri . '/images/logo.png';
+                    ?>
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                    <img src="<?php echo esc_attr( $logo ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" id="logo" />
+                    </a>
+                    </div> <!-- .logo-area -->
+                </div> <!-- .container -->
+            </div> <!-- .logo-container -->
+        </div> <!-- #logo-area-block -->
+        
+        <?php echo do_shortcode('[et_pb_section fullwidth="on" specialty="off" module_id="main-nav"][et_pb_fullwidth_menu admin_label="Fullwidth Menu" menu_id="13" background_color="#ffffff" background_layout="light" text_orientation="center" /][/et_pb_section]'); ?>
 
 		<div id="et-main-area">

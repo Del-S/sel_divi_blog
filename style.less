@@ -16,13 +16,18 @@ a {
     &:hover { color: #c90077; }
 }
 
+.et_fixed_nav #page-container {
+    padding-top: 0px;
+}
+
+.et-social-icons li { margin-left: 0; }
+.et-social-icons .et-social-icon a:before { content: none; }
+
 
 /* Header */
-#main-header { 
-    background-color: black;
-    
+#main-header-block { background-color: black; padding: 8px 0;
     #top-menu {
-        li a { color: white; }
+        li a { color: white; padding: 10px 0 0 0; }
         li.current-menu-item a { font-weight: bold; }
         li a:hover { color: #ec008c; }
     }
@@ -30,16 +35,75 @@ a {
     #et-top-navigation, .et-social-icons { float: left; }
     #et-top-social { float: right; }
     
-    .et-social-icons li { margin-left: 0; }
-    .et-social-icon a:before { content: none; }
-    
-    #et_top_search {
-        margin-top: 5px;
-        width: initial;
+    #et_top_search { margin-top: 5px; width: initial;
         #et_search_icon_el { height: 17px; width: 17px; background: none; padding: 0; right: 10px; top: 9px; font-size: 17px; position: absolute; cursor: pointer; color: #888;
             font-family: 'ETmodules'; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
         .et-search-form { position: initial; border: none; padding: 0; display: inline-block !important; box-shadow: none; -moz-box-shadow: none; -webkit-box-shadow: none; 
             input { width: 190px; padding: 10px; padding-right: 30px; }
         }
     }
+}
+
+/* Logo Area */
+#logo-area-block { position: relative;
+    .pic-right { background: url(./images/cmoud_pravy.png) no-repeat right top; width: 50%; height: 207px; float: right; }
+    .pic-left { background: url(./images/cmoud_levy.png) no-repeat; width: 50%; height: 207px; }
+    .logo-container { position: absolute; top: 10px; width: 100%; 
+        #logo { max-height: 100%; float: none; }
+        #logo-area { margin: 0 auto; text-align: center; padding: 40px 0 40px; }
+    }
+}
+
+/* Main menu */
+#main-nav { border-bottom: 3px solid #000; border-top: 1px solid #000; font-family: 'Oswald';
+    #top-menu { padding: 0 !important; font-size: 0;
+        li { font-size: 18px; padding: 0; 
+            &:not(:last-child):after { content: "/"; margin-top: 13px; font: normal 24px/24px Helvetica,Arial; display: block; float: left; width: 6px; color: #eee; }
+            &.menu-item-has-children a { margin-right: 8px; }
+            & a { padding: 0 15px; float: left; letter-spacing: .1em; text-transform: uppercase; color: black; height: 50px; line-height: 50px; }
+            & a:hover { color: #555; }
+        }
+        .menu-item-has-children > a:first-child:after, #et-secondary-nav .menu-item-has-children > a:first-child:after { font-weight: bold; }
+        .sub-menu { top: 50px; border: 1px solid black; border-top: 3px solid black; padding: 0px; width: inherit; max-width: 300px;
+            li { padding: 0 20px;
+                &.et-hover { background-color: rgba(0,0,0,0.03); }
+                &:after { content: none !important; }
+                a { height: initial; }
+                a:hover { background-color: transparent; }
+            }
+        }
+    }
+}
+
+/* Content */
+
+/* Footer */
+
+#main-footer { background-color: #2c2c2c;
+    
+    #footer-widgets { padding: 10px 0;
+        .footer-widget:first-child { border-right: 1px dotted #585b61; }
+        .footer-widget { width: 45%; margin-right: 0; padding: 0 20px; margin: 30px 0;
+            .et-social-icons { float: none; margin: 0 auto; text-align: center; 
+                li { padding: 0;
+                    &:before { content: none; }
+                }
+            }
+        }
+    }
+
+    #footer-bottom { background-color: black; padding: 8px 0 0 0;
+        #footer-info { color: white; padding: 7px 0 0 0; }
+        #el-logo { float: right; }
+    }
+}
+
+/* Media */
+@media only screen and (max-width: 1360px) {
+    #logo-area-block .pic-right { display: none; visibility: hidden; }  
+    #logo-area-block .pic-left { width: 100%; }  
+}
+
+@media only screen and (max-width: 800px) {
+    #logo-area-block .pic-left { display: none; visibility: hidden; }  
 }
