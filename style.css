@@ -25,6 +25,34 @@ a:hover {
 .et-social-icons .et-social-icon a:before {
   content: none;
 }
+.et_pb_slider .et-pb-slider-arrows a {
+  background-color: #fff;
+  color: #555;
+  width: 60px;
+  height: 60px;
+  -webkit-border-radius: 60px;
+  -moz-border-radius: 60px;
+  border-radius: 60px;
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.et_pb_slider .et-pb-slider-arrows a.et-pb-arrow-prev:before,
+.et_pb_slider .et-pb-slider-arrows a.et-pb-arrow-next:before {
+  font-size: 36px;
+  margin: 11px;
+  display: block;
+  font-weight: bold;
+}
+.et_pb_slider .et-pb-slider-arrows a:hover {
+  background-color: #ec008c;
+  color: white;
+  -ms-transform: scale(1.4);
+  -o-transform: scale(1.4);
+  -moz-transform: scale(1.4);
+  -webkit-transform: scale(1.4);
+  transform: scale(1.4);
+}
 /* Header */
 #main-header-block {
   background-color: black;
@@ -180,6 +208,52 @@ a:hover {
   background-color: transparent;
 }
 /* Content */
+/* Home Page */
+#et-main-area .et_pb_section {
+  padding: 0;
+}
+#et-main-area .et_pb_section.blog-no-margin-right .et_pb_column_1_3 {
+  margin-right: 0;
+}
+#et-main-area .et_pb_section .et_pb_column {
+  margin-right: 30px;
+}
+#et-main-area .et_pb_section .et_pb_column_1_3 {
+  width: 350px;
+}
+#et-main-area .et_pb_section .et_pb_column_2_3 .et_pb_slider,
+#et-main-area .et_pb_section .et_pb_column_2_3 .et_pb_slides,
+#et-main-area .et_pb_section .et_pb_column_2_3 .et_pb_slide {
+  height: 470px;
+}
+#et-main-area .et_pb_section .et_pb_column_2_3 .et_pb_slider .et_pb_slide_description {
+  padding: 165px 60px;
+  text-transform: uppercase;
+  font-family: 'Oswald';
+  font-weight: bold;
+  text-shadow: none;
+  letter-spacing: .3em;
+}
+#et-main-area .et_pb_section .et_pb_column_2_3 .et_pb_slider .et_pb_slide_description a {
+  color: white;
+}
+#et-main-area .et_pb_section .et_pb_column_2_3 .et_pb_slider .et_pb_slide_description a:hover {
+  text-decoration: underline;
+}
+#et-main-area .et_pb_section .et_pb_blog_grid .et_pb_post {
+  padding: 20px;
+  margin: 0 30px 32px 0;
+  width: 310px;
+  padding-bottom: 0;
+  border: none;
+}
+#et-main-area .et_pb_section .et_pb_blog_grid .et_pb_post .et_pb_image_container {
+  margin-bottom: 0;
+}
+#et-main-area .et_pb_section .et_pb_blog_grid.hide-text p,
+#et-main-area .et_pb_section .et_pb_blog_grid.hide-text h2 {
+  display: none;
+}
 /* Footer */
 #main-footer {
   background-color: #2c2c2c;

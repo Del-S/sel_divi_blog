@@ -177,4 +177,6 @@ function last_url_segment($url, $host) {
     return $return;
 }
 /* UTM codes - end */
+
+/* Divi changes */
 ?>
