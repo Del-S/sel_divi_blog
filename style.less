@@ -80,14 +80,20 @@ a {
 /* Footer */
 
 #main-footer { background-color: #2c2c2c;
-    
     #footer-widgets { padding: 10px 0;
         .footer-widget:first-child { border-right: 1px dotted #585b61; }
         .footer-widget { width: 45%; margin-right: 0; padding: 0 20px; margin: 30px 0;
-            .et-social-icons { float: none; margin: 0 auto; text-align: center; 
-                li { padding: 0;
-                    &:before { content: none; }
-                }
+            h4 { color: #eb058c; font-size: 16px; text-align: center; text-transform: uppercase; }
+            img#about-image { margin: 7px 15px 8px 0px; }
+            .et-social-icons { float: none; margin: 0 auto; text-align: center; }
+            li { padding: 0; display: inline-block;
+                &:before { content: none; }
+                a:hover { color: #ec008c; }
+            }
+            .widget_nav_menu li { padding-right: 20px; text-decoration: underline; }
+            .jetpack-image-container {
+                .wp-caption { background-color: inherit; border: none; padding: 0px; }
+                .wp-caption-text { display: none; }
             }
         }
     }
