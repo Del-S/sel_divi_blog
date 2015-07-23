@@ -14,7 +14,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<title><?php elegant_titles(); ?></title>
+	<title><?php wp_title(); ?></title>
 	<?php elegant_description(); ?>
 	<?php elegant_keywords(); ?>
 	<?php elegant_canonical(); ?>
@@ -69,15 +69,11 @@
 
 	$et_secondary_nav = $et_secondary_nav_items->secondary_nav;
 
-	$primary_nav_class = 'et_nav_text_color_' . et_get_option( 'primary_nav_text_color', 'dark' );
-
-	$secondary_nav_class = 'et_nav_text_color_' . et_get_option( 'secondary_nav_text_color', 'light' );
-
-	$et_top_info_defined = $et_secondary_nav_items->top_info_defined;
+    $et_top_info_defined = $et_secondary_nav_items->top_info_defined;
 ?>
 
 	<?php if ( $et_top_info_defined ) : ?>
-		<div id="top-header" class="<?php echo esc_attr( $secondary_nav_class ); ?>">
+		<div id="top-header">
 			<div class="container clearfix">
 
 			<?php if ( $et_contact_info_defined ) : ?>
