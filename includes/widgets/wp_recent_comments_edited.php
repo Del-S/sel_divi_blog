@@ -62,13 +62,9 @@ class WP_Widget_Recent_Comments_Edited extends WP_Widget {
 		/** This filter is documented in wp-includes/default-widgets.php */
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
         
-        $show_avatar = ( ! empty( $instance['show_avatar'] ) ) ? $instance['show_avatar'] : 0;
-		if ( ! $show_avatar )
-			$show_avatar = 0;
+        $show_avatar = isset( $instance['show_avatar'] ) ? $instance['show_avatar'] : false;
         
-        $show_content = ( ! empty( $instance['show_content'] ) ) ? $instance['show_content'] : 0;
-		if ( ! $show_content )
-			$show_content = 0;
+        $show_content = isset( $instance['show_content'] ) ? $instance['show_content'] : false;
 
 		$number = ( ! empty( $instance['number'] ) ) ? absint( $instance['number'] ) : 5;
 		if ( ! $number )
@@ -98,7 +94,7 @@ class WP_Widget_Recent_Comments_Edited extends WP_Widget {
 			$output .= $args['before_title'] . $title . $args['after_title'];
 		}
 
-		$output .= '<ul id="recentcomments">';
+		$output .= '<ul id="recentcomments_edited">';
 		if ( $comments ) {
 			// Prime cache for associated posts. (Prime post term cache if we need it for permalinks.)
 			$post_ids = array_unique( wp_list_pluck( $comments, 'comment_post_ID' ) );
@@ -106,12 +102,12 @@ class WP_Widget_Recent_Comments_Edited extends WP_Widget {
 
             $counter = 1;
 			foreach ( (array) $comments as $comment) { 
-				$output .= '<li class="recentcomments">';
+				$output .= '<li class="recentcomments_edited">';
                 $output .= '<header class="clearfix">';
                 $output .= '<span class="comment-count">'.$counter.'</span>';
                 
                 if($show_avatar) {
-                    $output .= '<figure>';
+                    $output .= '<div class="figure">';
                     if($comment->user_id != 0 || !empty($comment->user_id)) {
                         $output .= '<a href="'.get_author_posts_url($comment->user_id).'"> 
                         '.get_avatar( $comment, 40 ).'
@@ -119,11 +115,11 @@ class WP_Widget_Recent_Comments_Edited extends WP_Widget {
                     } else {
                         $output .= get_avatar( $comment, 40 );
                     }  
-                    $output .= '</figure>';
+                    $output .= '</div>';
                 }
                 
 				$output .= '<span class="comment-author-link">' .get_comment_author_link(). '</span>';
-				$output .= '<a href="' . esc_url( get_comment_link( $comment->comment_ID ) ) . '">' . get_the_title( $comment->comment_post_ID ) . '</a>';
+				$output .= '<a href="' . esc_url( get_comment_link( $comment->comment_ID ) ) . '" class="post-link">' . get_the_title( $comment->comment_post_ID ) . '</a>';
                 $output .= '</header>';
                 
                 if($show_content) {
@@ -150,8 +146,8 @@ class WP_Widget_Recent_Comments_Edited extends WP_Widget {
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['number'] = absint( $new_instance['number'] );
         $instance['content_length'] = absint( $new_instance['content_length'] );
-        $instance['show_avatar'] = ( isset($new_instance['show_avatar']) ) ? 1 : 0;
-        $instance['show_content'] = ( isset($new_instance['show_content']) ) ? 1 : 0;
+        $instance['show_avatar'] = isset( $new_instance['show_avatar'] ) ? (bool) $new_instance['show_avatar'] : false;
+        $instance['show_content'] = isset( $new_instance['show_content'] ) ? (bool) $new_instance['show_content'] : false;
 		$this->flush_widget_cache();
 
 		$alloptions = wp_cache_get( 'alloptions', 'options' );
