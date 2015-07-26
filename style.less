@@ -34,9 +34,9 @@ h1 { color: black; font-size: 42px; }
 
 .et_pb_slider {
     .et-pb-slider-arrows {
-        a { background-color: #fff; color: #555; width: 60px; height: 60px; -webkit-border-radius: 60px; -moz-border-radius: 60px; border-radius: 60px; -moz-box-shadow: 0 0 5px rgba(0,0,0,0.1); -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.1); box-shadow: 0 0 5px rgba(0,0,0,0.1); 
+        a { background-color: #fff; color: #555 !important; width: 60px; height: 60px; -webkit-border-radius: 60px; -moz-border-radius: 60px; border-radius: 60px; -moz-box-shadow: 0 0 5px rgba(0,0,0,0.1); -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.1); box-shadow: 0 0 5px rgba(0,0,0,0.1); 
             &.et-pb-arrow-prev:before, &.et-pb-arrow-next:before { font-size: 36px; margin: 11px; display: block; font-weight: bold; }
-            &:hover { background-color: #ec008c; color: white; -ms-transform: scale(1.4); -o-transform: scale(1.4); -moz-transform: scale(1.4); -webkit-transform: scale(1.4); transform: scale(1.4); }
+            &:hover { background-color: #ec008c; color: white !important; -ms-transform: scale(1.4); -o-transform: scale(1.4); -moz-transform: scale(1.4); -webkit-transform: scale(1.4); transform: scale(1.4); }
         }
     }
 }
@@ -45,7 +45,8 @@ h1 { color: black; font-size: 42px; }
 .et_pb_bg_layout_light .et_pb_post .post-meta, .et_pb_bg_layout_light .et_pb_portfolio_item .post-meta, .et_pb_bg_layout_light .et_pb_post .post-meta a, .et_pb_bg_layout_light .et_pb_portfolio_item .post-meta a, .et_pb_bg_layout_light .et_pb_post p, .et_pb_bg_layout_light p.et_pb_title_meta_container, .et_pb_bg_layout_light p.et_pb_title_meta_container a { color: black; }
 #top-menu-nav > ul > li > a:hover, #et-secondary-menu > ul > li > a:hover, .fullwidth-menu a:hover, #et-info-email:hover, .et-social-icons a:hover { opacity: initial; -moz-transition: none; -webkit-transition: none; transition: none; }
 
-.et_pb_blog_grid { 
+.et_pb_blog_grid { text-align: center;
+    h2 { letter-spacing: .05em; }
     .et_pb_image_container { overflow: hidden;
         a { display: block; position: relative;
             img { position: relative; z-index: 2; opacity: 1; -webkit-transition: all .5s ease; -moz-transition: all .5s ease; -o-transition: all .5s ease; -ms-transition: all .5s ease; transition: all .5s ease;
@@ -53,6 +54,9 @@ h1 { color: black; font-size: 42px; }
             }
             &:after { content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; background-color: #ec008c; }
         }
+    }
+    .more-link {
+        text-transform: uppercase; font-weight: bold;
     }
 }
 

@@ -57,7 +57,7 @@ h1 {
 }
 .et_pb_slider .et-pb-slider-arrows a {
   background-color: #fff;
-  color: #555;
+  color: #555 !important;
   width: 60px;
   height: 60px;
   -webkit-border-radius: 60px;
@@ -76,7 +76,7 @@ h1 {
 }
 .et_pb_slider .et-pb-slider-arrows a:hover {
   background-color: #ec008c;
-  color: white;
+  color: white !important;
   -ms-transform: scale(1.4);
   -o-transform: scale(1.4);
   -moz-transform: scale(1.4);
@@ -104,6 +104,12 @@ h1 {
   -moz-transition: none;
   -webkit-transition: none;
   transition: none;
+}
+.et_pb_blog_grid {
+  text-align: center;
+}
+.et_pb_blog_grid h2 {
+  letter-spacing: .05em;
 }
 .et_pb_blog_grid .et_pb_image_container {
   overflow: hidden;
@@ -140,6 +146,10 @@ h1 {
   height: 100%;
   z-index: 1;
   background-color: #ec008c;
+}
+.et_pb_blog_grid .more-link {
+  text-transform: uppercase;
+  font-weight: bold;
 }
 /* Header */
 #main-header-block {
