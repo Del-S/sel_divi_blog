@@ -20,7 +20,8 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+h6 {
   font-family: 'Oswald', 'Open Sans', Arial, sans-serif;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -85,6 +86,25 @@ h1 {
 .et_pb_section {
   padding: 0;
 }
+.et_pb_bg_layout_light .et_pb_post .post-meta,
+.et_pb_bg_layout_light .et_pb_portfolio_item .post-meta,
+.et_pb_bg_layout_light .et_pb_post .post-meta a,
+.et_pb_bg_layout_light .et_pb_portfolio_item .post-meta a,
+.et_pb_bg_layout_light .et_pb_post p,
+.et_pb_bg_layout_light p.et_pb_title_meta_container,
+.et_pb_bg_layout_light p.et_pb_title_meta_container a {
+  color: black;
+}
+#top-menu-nav > ul > li > a:hover,
+#et-secondary-menu > ul > li > a:hover,
+.fullwidth-menu a:hover,
+#et-info-email:hover,
+.et-social-icons a:hover {
+  opacity: initial;
+  -moz-transition: none;
+  -webkit-transition: none;
+  transition: none;
+}
 /* Header */
 #main-header-block {
   background-color: black;
@@ -93,12 +113,17 @@ h1 {
 #main-header-block #top-menu li a {
   color: white;
   padding: 10px 0 0 0;
-}
-#main-header-block #top-menu li.current-menu-item a {
-  font-weight: bold;
+  -moz-transition: none;
+  -webkit-transition: none;
+  transition: none;
+  font-weight: normal;
 }
 #main-header-block #top-menu li a:hover {
   color: #ec008c;
+  opacity: 1;
+}
+#main-header-block #top-menu li.current-menu-item a {
+  font-weight: bold;
 }
 #main-header-block #et-top-navigation,
 #main-header-block .et-social-icons {
@@ -195,6 +220,7 @@ h1 {
 #main-nav #menu-menu-mid li {
   font-size: 18px;
   padding: 0;
+  /*& a:hover { color: #555; }*/
 }
 #main-nav #menu-menu-mid li:not(:last-child):after {
   content: "/";
@@ -216,9 +242,6 @@ h1 {
   color: black;
   height: 50px;
   line-height: 50px;
-}
-#main-nav #menu-menu-mid li a:hover {
-  color: #555;
 }
 #main-nav #menu-menu-mid .menu-item-has-children > a:first-child:after,
 #main-nav #menu-menu-mid #et-secondary-nav .menu-item-has-children > a:first-child:after {
@@ -270,26 +293,45 @@ h1 {
   top: 50%;
   z-index: 1;
 }
+.et_pb_blog_grid .column .post {
+  border: none;
+  border-bottom: 3px solid #000;
+}
 /* Sidebar */
 #sidebar,
-.et_pb_sidebar_0 {
+.et_pb_widget_area {
   border: 1px solid #000;
   padding: 24px;
 }
 #sidebar h4,
-.et_pb_sidebar_0 h4 {
+.et_pb_widget_area h4 {
   text-align: center;
   padding-bottom: 20px;
 }
 #sidebar .et_pb_widget:not(:last-child),
-.et_pb_sidebar_0 .et_pb_widget:not(:last-child) {
+.et_pb_widget_area .et_pb_widget:not(:last-child) {
   margin-bottom: 30px;
   padding-bottom: 30px;
   border-bottom: 1px solid #000;
 }
+#sidebar .et_pb_widget a,
+.et_pb_widget_area .et_pb_widget a {
+  color: black;
+  font-size: 14px !important;
+}
 .author-profile.clear {
   float: left;
   clear: none;
+}
+.author-profile.clear div {
+  margin-right: 10px;
+}
+.tagcloud a {
+  background-color: inherit;
+  border: 1px solid black;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
 }
 /* Home Page */
 #et-main-area .et_pb_section.blog-no-margin-right .et_pb_column_1_3 {
@@ -336,13 +378,28 @@ h1 {
   font-family: 'Oswald';
   font-weight: bold;
   text-shadow: none;
-  letter-spacing: .3em;
+  letter-spacing: .2em;
+}
+#et-main-area .et_pb_section.blog-no-margin-right .et_pb_column_2_3 .et_pb_slider .et_pb_slide_description h2 {
+  font-size: 28px;
+}
+#et-main-area .et_pb_section.blog-no-margin-right .et_pb_column_2_3 .et_pb_slider .et_pb_slide_description p {
+  font-size: 16px;
 }
 #et-main-area .et_pb_section.blog-no-margin-right .et_pb_column_2_3 .et_pb_slider .et_pb_slide_description a {
   color: white;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
 }
 #et-main-area .et_pb_section.blog-no-margin-right .et_pb_column_2_3 .et_pb_slider .et_pb_slide_description a:hover {
-  text-decoration: underline;
+  text-decoration: none;
+  color: #ec008c;
+  background-color: transparent;
+  border-color: #ec008c;
+}
+#et-main-area .et_pb_section.blog-no-margin-right .et_pb_column_2_3 .et_pb_slider .et_pb_slide_description a:after {
+  color: #ec008c;
 }
 #et-main-area .et_pb_section.blog-no-margin-right .et_pb_blog_grid .et_pb_post {
   padding: 20px;
@@ -360,7 +417,7 @@ h1 {
 }
 /* Footer */
 #main-footer {
-  background-color: #2c2c2c;
+  background-color: #242628;
 }
 #main-footer #footer-widgets {
   padding: 10px 0;
