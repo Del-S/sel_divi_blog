@@ -179,6 +179,17 @@ h1 { color: black; font-size: 42px; }
     }
 }
 
+/* Pagination */
+.pagination { margin: 0; padding: 20px 0; border-top: 2px solid black; border-bottom: 2px solid black; text-align: center; color: black;
+    a { color: #666; margin: 4px 2px; padding: 5px 10px;
+        &.next, &.previous { color: black; }
+        &.last { display: none; visibility: hidden; }
+        &:hover { background-color: #ec008c; color: black; }
+    }
+    .current { margin: 4px 2px; padding: 5px 10px; background-color: #ec008c; }
+    .dots { color: #666; margin: 0 6px; }
+}
+
 /* Home Page */
 #et-main-area {
     .et_pb_section.blog-no-margin-right {

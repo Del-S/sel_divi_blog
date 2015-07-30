@@ -71,7 +71,6 @@ function redirect_single_post() {
     }
 }
 
-
 /* UTM codes for outbound links js */   
 add_filter('last_url_segment', 'last_url_segment', 10, 2);
 

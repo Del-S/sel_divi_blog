@@ -460,6 +460,41 @@ h1 {
   margin-left: -6px;
   border-bottom-color: #fff;
 }
+/* Pagination */
+.pagination {
+  margin: 0;
+  padding: 20px 0;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  text-align: center;
+  color: black;
+}
+.pagination a {
+  color: #666;
+  margin: 4px 2px;
+  padding: 5px 10px;
+}
+.pagination a.next,
+.pagination a.previous {
+  color: black;
+}
+.pagination a.last {
+  display: none;
+  visibility: hidden;
+}
+.pagination a:hover {
+  background-color: #ec008c;
+  color: black;
+}
+.pagination .current {
+  margin: 4px 2px;
+  padding: 5px 10px;
+  background-color: #ec008c;
+}
+.pagination .dots {
+  color: #666;
+  margin: 0 6px;
+}
 /* Home Page */
 #et-main-area .et_pb_section.blog-no-margin-right .et_pb_column_1_3 {
   margin-right: 0;
