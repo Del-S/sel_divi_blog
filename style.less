@@ -125,8 +125,9 @@ h1 { color: black; font-size: 42px; }
 
 .et_pb_blog_grid {
     .column {
-        .post {
-            border: none; border-bottom: 3px solid #000;
+        .post { border: none; border-bottom: 3px solid #000;
+            h2 { line-height: 1.4; }
+            .more-link { display: block; margin-top: 5px; }
         }
     }
 }
@@ -180,19 +181,20 @@ h1 { color: black; font-size: 42px; }
 }
 
 /* Pagination */
-.pagination { margin: 0; padding: 20px 0; border-top: 2px solid black; border-bottom: 2px solid black; text-align: center; color: black;
-    a { color: #666; margin: 4px 2px; padding: 5px 10px;
+.pagination { margin: 0; padding: 30px 0; border-top: 2px solid black; border-bottom: 2px solid black; text-align: center; color: black; font-size: 16px;
+    a { color: #666; margin: 4px 2px; padding: 5px 11px;
         &.next, &.previous { color: black; }
         &.last { display: none; visibility: hidden; }
         &:hover { background-color: #ec008c; color: black; }
     }
-    .current { margin: 4px 2px; padding: 5px 10px; background-color: #ec008c; }
+    .current { margin: 4px 2px; padding: 5px 11px; background-color: #ec008c; }
     .dots { color: #666; margin: 0 6px; }
 }
 
 /* Home Page */
 #et-main-area {
     .et_pb_section.blog-no-margin-right {
+        .et_pb_row { padding-bottom: 0;}
         .et_pb_column_1_3 { margin-right: 0; }
         .et_pb_column { margin-right: 30px; }
         .et_pb_column_1_3 { width: 350px; }
@@ -203,9 +205,10 @@ h1 { color: black; font-size: 42px; }
                 &:hover:before { opacity: .7; }
             }
             .et_pb_slider .et_pb_slide_description { padding: 165px 60px; text-transform: uppercase; font-family: 'Oswald'; font-weight: bold; text-shadow: none; letter-spacing: .2em;
-                h2 { font-size: 28px; }
-                p { font-size: 16px }
-                a { color: white; -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0;
+                h2 { font-size: 28px; text-shadow: 2px 2px 0px #000; }
+                p { font-size: 16px; text-shadow: 2px 2px 0px #000; }
+                a { color: white; -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0; text-shadow: 2px 2px 0px #000;
+                    .et_pb_more_button { box-shadow: 2px 2px 0 #000; }
                     &:hover { text-decoration: none; color: #ec008c; background-color: transparent; border-color: #ec008c; } 
                     &:after { color: #ec008c;  }
                 }
@@ -214,17 +217,22 @@ h1 { color: black; font-size: 42px; }
         
         .et_pb_blog_grid {
             .et_pb_post { padding: 20px; margin: 0 0 32px 0; width: 350px; padding-bottom: 0; border: none;
-                .et_pb_image_container { margin-bottom: 0; }
+                .et_pb_image_container { margin-bottom: 0; }    
             }
             &.hide-text { 
-                & p, & h2 { display: none; } 
-            }
+                .et_pb_post { position: relative;
+                    .et_pb_image_container { opacity: .9; }
+                    &:hover img { opacity: .5; }
+                    & p { display: none; } 
+                    & h2 { font-size: 26px; padding: 0 10%; color: white; text-shadow: 2px 2px 0px #000; position: absolute; z-index: 2; top: 0; bottom: 0; left: 0; right: 0; margin: auto; display: table; width: 100%; }
+                } 
+            }   
         }
     }
 }
 
 /* Footer */
-#main-footer { background-color: #242628;
+#main-footer { background-color: #242628; margin-top: 20px;
     #footer-widgets { padding: 10px 0;
         .footer-widget:first-child { border-right: 1px dotted #585b61; }
         .footer-widget { width: 45%; margin-right: 0; padding: 0 20px; margin: 30px 0;
@@ -241,6 +249,8 @@ h1 { color: black; font-size: 42px; }
                 .wp-caption { background-color: inherit; border: none; padding: 0; }
                 .wp-caption-text { display: none; }
             }
+            .widget_aboutmewidget { float: none; }
+            #et-footer-social { margin-top: 30px; }
         }
     }
 
