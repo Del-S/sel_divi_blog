@@ -11,7 +11,7 @@ Template: divi
 @import url("../divi/style.css");
 
 /* Common */
-a { 
+a {
     color: #ec008c; 
     &:hover { color: #c90077; }
 }
@@ -39,6 +39,15 @@ h1 { color: black; font-size: 42px; }
             &:hover { background-color: #ec008c; color: white !important; -ms-transform: scale(1.4); -o-transform: scale(1.4); -moz-transform: scale(1.4); -webkit-transform: scale(1.4); transform: scale(1.4); }
         }
     }
+    .et_pb_slide_link_wrapper {
+        .et_pb_slide_link { display: block; width: 100%; height: 100%; }
+    }
+}
+
+.et_pb_post_slider { position: relative;
+    .et_pb_slide_link_wrapper { width: 100%; height: 100%; position: absolute; left:0; z-index: 2;
+        .et_pb_slide_link { display: block; width: 100%; height: 100%; cursor: pointer; }
+    }
 }
 .et_pb_section { padding: 0; }
 
@@ -59,7 +68,6 @@ h1 { color: black; font-size: 42px; }
         text-transform: uppercase; font-weight: bold;
     }
 }
-
 
 /* Header */
 #main-header-block { background-color: black; padding: 8px 0;

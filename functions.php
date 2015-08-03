@@ -6,6 +6,14 @@ function el_et_setup_theme() {
 }
 add_action( 'after_setup_theme', 'el_et_setup_theme' );
 
+
+function et_builder_add_main_elements_custom() {
+    $template_directory = get_stylesheet_directory();
+    require $template_directory . '/includes/builder/slider-module.php';
+}
+$action_hook = is_admin() ? 'wp_loaded' : 'wp';
+add_action( $action_hook, 'et_builder_add_main_elements_custom' );
+
 // Replace link on WP logo
 function put_my_url(){
 	return "http://www.selfino.cz/"; // your URL here
@@ -40,7 +48,7 @@ function change_wp_default_email($content_type) {
 // Add Google Fonts as we need
 function google_fonts(){
     wp_enqueue_style( 'google_font_1', 'http://fonts.googleapis.com/css?family=Open+Sans:400,700,300&subset=latin,latin-ext' );
-    wp_enqueue_style( 'google_font_2', 'http://fonts.googleapis.com/css?family=Oswald%3A400%7CLato&amp;subset=latin&amp;ver=1430629811');
+    wp_enqueue_style( 'google_font_2', 'http://fonts.googleapis.com/css?family=Oswald:400,300,700&subset=latin,latin-ext');
 	//wp_enqueue_style( 'google_font_2', 'http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&subset=latin,latin-ext' );
 }
 add_action( 'wp_enqueue_scripts', 'google_fonts', 9 );
