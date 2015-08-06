@@ -3,7 +3,7 @@
 <div id="main-content">
 	<div class="container">
 		<div id="content-area" class="clearfix">
-			<div id="left-area">
+			<?php //<div id="left-area"> ?>
 		<?php
 			/*if ( have_posts() ) :
 				while ( have_posts() ) : the_post();
@@ -70,7 +70,7 @@
 
 			<?php
 				$cat_id = get_query_var('cat');
-				echo do_shortcode('[et_pb_section fullwidth="on" specialty="off"][et_pb_fullwidth_header title="<span>'.get_cat_name( $cat_id ).'</span>" text_orientation="center" content_orientation="center" module_class="title-with-sep"][/et_pb_fullwidth_header][/et_pb_section]');
+				echo do_shortcode('[et_pb_section fullwidth="on" specialty="off"][et_pb_fullwidth_header title="<span>'.get_cat_name( $cat_id ).'</span>" text_orientation="center" content_orientation="center" module_class="title-with-sep category_heading"][/et_pb_fullwidth_header][/et_pb_section]');
 
 				echo do_shortcode('
 [et_pb_section fullwidth="off" specialty="off"][et_pb_row]
@@ -78,7 +78,7 @@
 [et_pb_column type="1_3"][et_pb_sidebar orientation="right" area="sidebar-1" background_layout="light"][/et_pb_sidebar][/et_pb_column]
 [/et_pb_row][/et_pb_section]');
 			?>
-			</div> <!-- #left-area -->
+			<?php //</div> <!-- #left-area --> ?>
 
 			<?php //get_sidebar(); ?>
 		</div> <!-- #content-area -->
