@@ -15,7 +15,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 				$postinfo = is_single() ? et_get_option( 'divi_postinfo2' ) : et_get_option( 'divi_postinfo1' );
 				$post_meta = et_pb_postinfo_meta( $postinfo, et_get_option( 'divi_date_format', 'M j, Y' ), esc_html__( '0 comments', 'Divi' ), esc_html__( '1 comment', 'Divi' ), '% ' . esc_html__( 'comments', 'Divi' ) );
 				$post_meta = str_replace('"','\'',$post_meta);
-				echo do_shortcode('[et_pb_section fullwidth="on" specialty="off"][et_pb_fullwidth_header title="<span>'.get_the_title().'</span>" subhead="'.$post_meta.'" text_orientation="center" content_orientation="center" image_orientation="center" module_class="title-with-sep category_heading"][/et_pb_fullwidth_header][/et_pb_section]'); ?>
+				echo do_shortcode('[et_pb_section fullwidth="on" specialty="off"][et_pb_fullwidth_header title="<span>'.get_the_title().'</span>" subhead="'.$post_meta.'" text_orientation="center" content_orientation="center" image_orientation="center" module_class="title-with-sep post_heading"][/et_pb_fullwidth_header][/et_pb_section]'); ?>
 			<div id="left-area">
 
 			<?php while ( have_posts() ) : the_post(); ?>

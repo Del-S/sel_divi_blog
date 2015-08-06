@@ -3,13 +3,13 @@
 <div id="main-content">
 	<div class="container">
 		<div id="content-area" class="clearfix">
-			<?php //<div id="left-area"> ?>
+			<div id="left-area">
 		<?php
-			/*if ( have_posts() ) :
+			if ( have_posts() ) :
 				while ( have_posts() ) : the_post();
-					$post_format = et_pb_post_format(); ?/>
+					$post_format = et_pb_post_format(); ?>
 
-					<article id="post-<?php the_ID(); ?/>" <?php post_class( 'et_pb_post' ); ?/>>
+					<article id="post-<?php the_ID(); ?>" <?php post_class( 'et_pb_post' ); ?>>
 
 				<?php
 					$thumb = '';
@@ -32,18 +32,18 @@
 								</div>',
 								$first_video
 							);
-						elseif ( 'on' == et_get_option( 'divi_thumbnails_index', 'on' ) && '' !== $thumb  ) : ?/>
-							<a href="<?php the_permalink(); ?/>">
-								<?php print_thumbnail( $thumb, $thumbnail["use_timthumb"], $titletext, $width, $height ); ?/>
+						elseif ( 'on' == et_get_option( 'divi_thumbnails_index', 'on' ) && '' !== $thumb  ) : ?>
+							<a href="<?php the_permalink(); ?>">
+								<?php print_thumbnail( $thumb, $thumbnail["use_timthumb"], $titletext, $width, $height ); ?>
 							</a>
 					<?php
 						endif;
-					} ?/>
+					} ?>
 
-				<?php if ( ! in_array( $post_format, array( 'link', 'audio', 'quote', 'gallery' ) ) ) : ?/>
-					<?php if ( ! in_array( $post_format, array( 'link', 'audio' ) ) ) : ?/>
-						<h2><a href="<?php the_permalink(); ?/>"><?php the_title(); ?/></a></h2>
-					<?php endif; ?/>
+				<?php if ( ! in_array( $post_format, array( 'link', 'audio', 'quote', 'gallery' ) ) ) : ?>
+					<?php if ( ! in_array( $post_format, array( 'link', 'audio' ) ) ) : ?>
+						<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+					<?php endif; ?>
 
 					<?php
 						et_divi_post_meta();
@@ -52,8 +52,8 @@
 							truncate_post( 270 );
 						else
 							the_content();
-					?/>
-				<?php endif; ?/>
+					?>
+				<?php endif; ?>
 
 					</article> <!-- .et_pb_post -->
 			<?php
@@ -66,21 +66,10 @@
 				else :
 					get_template_part( 'includes/no-results', 'index' );
 				endif;
-			*/?>
-
-			<?php
-				$cat_id = get_query_var('cat');
-				echo do_shortcode('[et_pb_section fullwidth="on" specialty="off"][et_pb_fullwidth_header title="<span>'.get_cat_name( $cat_id ).'</span>" text_orientation="center" content_orientation="center" module_class="title-with-sep category_heading"][/et_pb_fullwidth_header][/et_pb_section]');
-
-				echo do_shortcode('
-[et_pb_section fullwidth="off" specialty="off"][et_pb_row]
-[et_pb_column type="2_3"][et_pb_blog fullwidth="off" include_categories="'.$cat_id.'" show_thumbnail="on" show_content="off" show_more="on" show_author="on" show_date="on" show_categories="on" show_pagination="on" background_layout="light"][/et_pb_blog][/et_pb_column]
-[et_pb_column type="1_3"]'.get_sidebar().'[/et_pb_column]
-[/et_pb_row][/et_pb_section]');
 			?>
-			<?php //</div> <!-- #left-area --> ?>
+			</div> <!-- #left-area -->
 
-			<?php //get_sidebar(); ?>
+			<?php get_sidebar(); ?>
 		</div> <!-- #content-area -->
 	</div> <!-- .container -->
 </div> <!-- #main-content -->

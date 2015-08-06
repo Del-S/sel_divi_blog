@@ -9,6 +9,13 @@ Author URI: http://parfemy-elnino.cz
 Template: divi
 */
 /* Common */
+body {
+  color: #444;
+}
+body .broken_link,
+body a.broken_link {
+  text-decoration: none;
+}
 a {
   color: #ec008c;
 }
@@ -750,10 +757,15 @@ h1 {
   float: right;
 }
 /* Category */
-/*.et_pb_gutters2.et_right_sidebar #left-area { width: 68.666%; }
-.et_pb_gutter.et_pb_gutters2 #sidebar { width: 31.333%;
-    .et_pb_widget { float: left; }
-} */
+.et_pb_gutters2.et_right_sidebar #left-area {
+  width: 68.666%;
+}
+.et_pb_gutter.et_pb_gutters2 #sidebar {
+  width: 31.333%;
+}
+.et_pb_gutter.et_pb_gutters2 #sidebar .et_pb_widget {
+  float: left;
+}
 #main-content .container {
   padding-top: 31px;
 }
@@ -762,6 +774,45 @@ h1 {
 }
 .et_pb_fullwidth_header.category_heading {
   padding-bottom: 10px;
+}
+/* Posts */
+.post_heading {
+  margin-bottom: 30px;
+}
+.post_heading .et_pb_fullwidth_header_container .header-content a {
+  margin-top: 0;
+  color: #666;
+}
+.post_heading .et_pb_fullwidth_header_container .header-content a:hover {
+  text-decoration: underline;
+}
+.post_heading .et_pb_fullwidth_header_overlay,
+.post_heading .et_pb_fullwidth_header_scroll {
+  display: none;
+}
+.post h2 {
+  margin-top: 10px;
+  letter-spacing: 0.05em;
+}
+.post #comment-wrap {
+  padding-top: 0;
+}
+.post .entry-content p:first-child:first-letter {
+  font-size: 70px;
+  float: left;
+  padding: 4px 12px 0 0;
+  line-height: 56px;
+}
+.post .et_social_inline_bottom {
+  margin: 30px 0;
+  padding: 30px 0 16px 0;
+  border-top: 3px solid black;
+}
+.post .wp_rp_wrap {
+  margin: 30px 0;
+  padding: 30px 0 16px 0;
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
 }
 /* Media */
 @media only screen and (max-width: 1360px) {
