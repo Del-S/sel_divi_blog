@@ -381,6 +381,9 @@ h2 {
   right: auto;
   z-index: 9999;
 }
+.admin-bar #main-nav.sticky-wrapper .sticky {
+  top: 32px;
+}
 /* Content */
 .title-with-sep h1 {
   position: relative;
