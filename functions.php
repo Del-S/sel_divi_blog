@@ -88,6 +88,17 @@ function redirect_single_post() {
     }
 }
 
+// Remove HomePage from search (change on live !!!!!!)
+add_action('pre_get_posts','exclude_posts_from_search');
+function exclude_posts_from_search( $query ){
+
+    if( $query->is_main_query() && is_search() ){
+        $post_ids = array(2874);
+        $query->set('post__not_in', $post_ids);
+    }
+
+}
+
 /* UTM codes for outbound links js */   
 add_filter('last_url_segment', 'last_url_segment', 10, 2);
 

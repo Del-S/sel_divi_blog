@@ -39,6 +39,10 @@ h1 {
   color: black;
   font-size: 42px;
 }
+h2 {
+  font-size: 26px;
+  letter-spacing: normal;
+}
 .et_pb_fullwidth_header {
   padding: 0;
 }
@@ -146,14 +150,14 @@ h1 {
 .et_pb_blog_grid h2 {
   letter-spacing: .05em;
 }
-.et_pb_blog_grid .et_pb_image_container {
+.et_pb_image_container {
   overflow: hidden;
 }
-.et_pb_blog_grid .et_pb_image_container a {
+.et_pb_image_container a {
   display: block;
   position: relative;
 }
-.et_pb_blog_grid .et_pb_image_container a img {
+.et_pb_image_container a img {
   position: relative;
   z-index: 2;
   opacity: 1;
@@ -163,7 +167,7 @@ h1 {
   -ms-transition: all .5s ease;
   transition: all .5s ease;
 }
-.et_pb_blog_grid .et_pb_image_container a img:hover {
+.et_pb_image_container a img:hover {
   opacity: .5;
   -webkit-transform: scale(1.02);
   -moz-transform: scale(1.02);
@@ -171,7 +175,7 @@ h1 {
   -ms-transform: scale(1.02);
   transform: scale(1.02);
 }
-.et_pb_blog_grid .et_pb_image_container a:after {
+.et_pb_image_container a:after {
   content: "";
   display: block;
   position: absolute;
@@ -182,9 +186,11 @@ h1 {
   z-index: 1;
   background-color: #ec008c;
 }
-.et_pb_blog_grid .more-link {
+.more-link {
   text-transform: uppercase;
   font-weight: bold;
+  display: block;
+  margin-top: 5px;
 }
 .mobile_menu_bar:before {
   color: #ec008c;
@@ -404,10 +410,6 @@ h1 {
 }
 .et_pb_blog_grid .column .post h2 {
   line-height: 1.4;
-}
-.et_pb_blog_grid .column .post .more-link {
-  display: block;
-  margin-top: 5px;
 }
 /* Sidebar */
 #sidebar,
@@ -813,6 +815,28 @@ h1 {
   padding: 30px 0 16px 0;
   border-top: 3px solid black;
   border-bottom: 3px solid black;
+}
+/* Search */
+.search-results .et_pb_post {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+}
+.search-results .et_pb_post:not( :nth-last-child(2)) {
+  border-bottom: 1px solid #ddd;
+}
+.search-results .et_pb_post .et_pb_image_container {
+  float: left;
+  margin: 0 20px 0 10px;
+}
+.search-results .et_pb_post .et_pb_image_container img {
+  width: 320px;
+}
+.search-results .et_pb_post .post-meta-wrapper {
+  overflow: hidden;
+}
+.search-results .et_pb_post .post-meta-wrapper h2 {
+  font-size: 18px;
+  margin-top: 5px;
 }
 /* Media */
 @media only screen and (max-width: 1360px) {
