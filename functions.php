@@ -11,6 +11,11 @@ function divi_changes() {
         wp_register_script( 'js-divi-changes', get_stylesheet_directory_uri().'/js/divi-changes.js' , array('jquery'), '0.1', true );
         //wp_localize_script( 'js-divi-changes', 'data', $data );
         wp_enqueue_script( 'js-divi-changes' );
+        if(is_author() || is_tag() || is_date() || is_tax() || is_post_type_archive()) {
+            $theme_version = et_get_theme_version();
+            wp_register_script( 'js-custom-salvattore', get_template_directory_uri() . '/js/salvattore.min.js', array(), $theme_version, true );
+            wp_enqueue_script( 'js-custom-salvattore' );
+        }
     }
 }
 add_action( 'wp_enqueue_scripts', 'divi_changes' );

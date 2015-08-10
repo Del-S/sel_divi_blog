@@ -1,6 +1,7 @@
-<div class="pagination clearfix">
-    <?php wp_simple_pagination(); ?>
-</div>
+<?php 
+$args = array('before_pagination' => '<div class="pagination clearfix">', 'after_pagination' => '</div>');
+wp_simple_pagination($args); 
+?>
 <?php
 /*<div class="pagination clearfix">
 	<div class="alignleft"><?php next_posts_link(esc_html__('&laquo; Older Entries','Divi')); ?></div>

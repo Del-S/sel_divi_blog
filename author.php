@@ -3,14 +3,7 @@
 <div id="main-content">
 	<div class="container">
 		<div id="content-area" class="clearfix">
-			<?php
-			$title = '';
-			if(is_tag()) { $title = single_tag_title("", false); }
-			else if(is_date()) { $title = get_the_date(); }
-			else if(is_tax()) { $title = get_query_var('taxonomy'); }
-			else if(is_post_type_archive()) { $title = get_query_var('post_type'); }
-			echo do_shortcode('[et_pb_section fullwidth="on" specialty="off"][et_pb_fullwidth_header title="<span>'.$title.'</span>" text_orientation="center" content_orientation="center" image_orientation="center" module_class="title-with-sep post_heading"][/et_pb_fullwidth_header][/et_pb_section]'); ?>
-
+			<?php echo do_shortcode('[et_pb_section fullwidth="on" specialty="off"][et_pb_fullwidth_header title="<span>'.get_the_author().'</span>" text_orientation="center" content_orientation="center" image_orientation="center" module_class="title-with-sep post_heading"][/et_pb_fullwidth_header][/et_pb_section]'); ?>
 			<div id="left-area">
 				<div class="et_pb_column_2_3 full_width">
 					<div class="et_pb_blog_grid custom_blog" data-columns>
@@ -66,10 +59,10 @@
 							the_content();
 					?>
 				<?php endif; ?>
-						</div>
+
 					</article>
 
-				<?php endwhile; ?>
+			<?php endwhile; ?>
 
 					</div> <!-- .et_pb_column_2_3 -->
 				</div> <!-- .et_pb_blog_grid -->
@@ -79,12 +72,21 @@
 					wp_pagenavi();
 				else
 					get_template_part( 'includes/navigation', 'index' );
-			else :
-				get_template_part( 'includes/no-results', 'index' );
-			endif;
+				else :
+					get_template_part( 'includes/no-results', 'index' );
+				endif;
 			?>
 
 			</div> <!-- #left-area -->
+
+			<?php
+				$author_thumb_link = get_simple_local_avatar(get_the_author_meta('ID'));
+				$author_thumb_link = preg_match("/src='(.*?)'/i", $author_thumb_link, $match);
+				$author_thumb_link = $match[1];
+				$author_description = get_the_author_meta( 'description' );
+				$author_name = get_the_author();
+				echo do_shortcode('[author] [author_image timthumb="off"]'.esc_url($author_thumb_link).'[/author_image] [author_info]<h2 class="vcard author"><span class="fn">'.$author_name.'</span></h2>'.$author_description.'[/author_info] [/author]');
+			?>
 
 			<?php get_sidebar(); ?>
 		</div> <!-- #content-area -->

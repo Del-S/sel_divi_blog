@@ -12,6 +12,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
 	<div class="container">
 		<div id="content-area" class="clearfix">
+			<?php echo do_shortcode('[et_pb_section fullwidth="on" specialty="off"][et_pb_fullwidth_header title="<span>'.get_the_title().'</span>" text_orientation="center" content_orientation="center" image_orientation="center" module_class="title-with-sep post_heading"][/et_pb_fullwidth_header][/et_pb_section]'); ?>
 			<div id="left-area">
 
 <?php endif; ?>
@@ -22,7 +23,6 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
 				<?php if ( ! $is_page_builder_used ) : ?>
 
-					<h1 class="main_title"><?php the_title(); ?></h1>
 				<?php
 					$thumb = '';
 

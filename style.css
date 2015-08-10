@@ -838,6 +838,37 @@ h2 {
   font-size: 18px;
   margin-top: 5px;
 }
+/* Author */
+#content-area > .author-shortcodes {
+  margin-bottom: 10px;
+  width: 31.333%;
+  float: right;
+  border: 1px solid #000;
+}
+#content-area > .author-shortcodes .author-inner {
+  padding-left: 30px;
+}
+#content-area > .author-shortcodes .author-inner .author-image {
+  float: left;
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-right: 10px;
+  margin-top: 7px;
+  width: auto;
+  height: auto;
+}
+#content-area > .author-shortcodes .author-inner .author-image .author-overlay {
+  max-height: 96px;
+}
+/* Tag, Author, Taxonmy */
+.custom_blog[data-columns]::before {
+  content: '2 .column.size-1of2';
+}
+.full_width,
+.et_pb_gutters2 .et_pb_column_2_3.full_width {
+  width: 100%;
+}
 /* Media */
 @media only screen and (max-width: 1360px) {
   #logo-area-block .pic-right {
