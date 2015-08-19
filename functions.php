@@ -211,4 +211,69 @@ function last_url_segment($url, $host) {
 /* UTM codes - end */
 
 /* Divi changes */
+if ( ! function_exists( 'et_pb_get_comments_popup_link' ) ) :
+    function et_pb_get_comments_popup_link( $zero = false, $one = false, $more = false ){
+        $id = get_the_ID();
+        $number = get_comments_number( $id );
+
+        if( 0 == $number ) {
+            $url = get_permalink(get_the_ID());
+            $json = json_decode(file_get_contents('https://graph.facebook.com/?ids=' . $url));
+            $number = isset($json->$url->comments) ? $json->$url->comments : 0;
+        }
+
+
+        if ( 0 == $number && !comments_open() && !pings_open() ) return;
+
+        if ( $number > 1 )
+            $output = str_replace( '%', number_format_i18n( $number ), ( false === $more ) ? __( '% Comments', $themename ) : $more );
+        elseif ( $number == 0 )
+            $output = ( false === $zero ) ? __( 'No Comments', 'et_builder' ) : $zero;
+        else // must be one
+            $output = ( false === $one ) ? __( '1 Comment', 'et_builder' ) : $one;
+
+        return '<span class="comments-number">' . '<a href="' . esc_url( get_permalink() . '#respond' ) . '">' . apply_filters( 'comments_number', $output, $number ) . '</a>' . '</span>';
+    }
+endif;
+
+if ( ! function_exists( 'et_get_first_video' ) ) :
+    function et_get_first_video() {
+        $first_video  = '';
+        $custom_fields = get_post_custom();
+        $video_width  = (int) apply_filters( 'et_blog_video_width', 1080 );
+        $video_height = (int) apply_filters( 'et_blog_video_height', 630 );
+
+        foreach ( $custom_fields as $key => $custom_field ) {
+            if ( 0 !== strpos( $key, '_oembed_' ) ) {
+                continue;
+            }
+
+            $first_video = $custom_field[0];
+
+            $first_video = preg_replace( '/<embed /', '<embed wmode="transparent" ', $first_video );
+            $first_video = preg_replace( '/<\/object>/','<param name="wmode" value="transparent" /></object>', $first_video );
+
+            $first_video = preg_replace( "/width=\"[0-9]*\"/", "width={$video_width}", $first_video );
+            $first_video = preg_replace( "/height=\"[0-9]*\"/", "height={$video_height}", $first_video );
+
+            break;
+        }
+
+        if ($first_video == '{{unknown}}') { $first_video = ''; }
+
+        if ( '' === $first_video && has_shortcode( get_the_content(), 'video' )  ) {
+            $regex = get_shortcode_regex();
+            preg_match( "/{$regex}/s", get_the_content(), $match );
+
+            $first_video = preg_replace( "/width=\"[0-9]*\"/", "width=\"{$video_width}\"", $match[0] );
+            $first_video = preg_replace( "/height=\"[0-9]*\"/", "height=\"{$video_height}\"", $first_video );
+
+            add_filter( 'the_content', 'et_delete_post_video' );
+
+            $first_video = do_shortcode( et_pb_fix_shortcodes( $first_video ) );
+        }
+
+        return ( '' !== $first_video ) ? $first_video : false;
+    }
+endif;
 ?>

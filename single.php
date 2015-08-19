@@ -56,7 +56,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 							?>
 
 							<?php
-								$text_color_class = et_divi_get_post_text_color();
+								/*$text_color_class = et_divi_get_post_text_color();
 
 								$inline_style = et_divi_get_post_bg_inline_style();
 
@@ -95,7 +95,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 										);
 
 										break;
-								}
+								}*/
 
 							endif;
 						?>
