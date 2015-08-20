@@ -9,8 +9,8 @@ jQuery(document).ready(function($) {
     
     $(window).on("scroll", add_sticky);
     add_sticky();
-    
-    setTimeout(function () {
+
+    function change_top() {
         $(".hide-text .et_pb_post").each(function() {
             var img_height = $(this).children(".et_pb_image_container").height();
             var h2 = $(this).children("h2");
@@ -19,5 +19,15 @@ jQuery(document).ready(function($) {
             console.log(img_height + " ------ " + h2.height());
             console.log(h2);
         });
+    }
+
+    setTimeout(function () {
+        change_top();
     }, 100);
+    $(window).on("resize", change_top);
+
+    $(window).on("resize", function() {
+        // todo change on width
+        salvattore['recreate_columns']($(".hide-text")[0]);
+    });
 });
