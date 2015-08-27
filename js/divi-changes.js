@@ -13,11 +13,11 @@ jQuery(document).ready(function($) {
     function change_top() {
         $(".hide-text .et_pb_post").each(function() {
             var img_height = $(this).children(".et_pb_image_container").height();
+            var add = 2;
+            if($(this).hasClass('format-gallery')) { img_height = $(this).children(".et_pb_slider").height(); add = 0; }
             var h2 = $(this).children("h2");
-            var height = parseInt(((img_height-h2.height())/2)+2);
+            var height = parseInt(((img_height-h2.height())/2)+add);
             h2.css('top', height);
-            console.log(img_height + " ------ " + h2.height());
-            console.log(h2);
         });
     }
 
@@ -27,7 +27,8 @@ jQuery(document).ready(function($) {
     $(window).on("resize", change_top);
 
     $(window).on("resize", function() {
-        // todo change on width
-        salvattore['recreate_columns']($(".hide-text")[0]);
+        if($('body').hasClass('et_pb_pagebuilder_layout')) {
+            salvattore['recreate_columns']($(".hide-text")[0]);
+        }
     });
 });
