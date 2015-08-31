@@ -1,5 +1,6 @@
-<?php 
-$args = array('before_pagination' => '<div class="pagination clearfix">', 'after_pagination' => '</div>');
+<?php
+if ( is_search() || is_author() || is_date() ) { $class = " pagi-bottom"; }
+$args = array('before_pagination' => '<div class="pagination clearfix'.$class.'">', 'after_pagination' => '</div>');
 wp_simple_pagination($args); 
 ?>
 <?php

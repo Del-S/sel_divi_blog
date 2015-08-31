@@ -273,6 +273,18 @@ if ( ! function_exists( 'et_get_first_video' ) ) :
             $first_video = do_shortcode( et_pb_fix_shortcodes( $first_video ) );
         }
 
+        if ( '' === $first_video && has_shortcode( get_the_content(), 'youtube' )  ) {
+            $regex = get_shortcode_regex();
+            preg_match( "/{$regex}/s", get_the_content(), $match );
+
+            $first_video = preg_replace( "/width=\"[0-9]*\"/", "width=\"{$video_width}\"", $match[0] );
+            $first_video = preg_replace( "/height=\"[0-9]*\"/", "height=\"{$video_height}\"", $first_video );
+
+            add_filter( 'the_content', 'et_delete_post_video' );
+
+            $first_video = do_shortcode( et_pb_fix_shortcodes( $first_video ) );
+        }
+
         return ( '' !== $first_video ) ? $first_video : false;
     }
 endif;

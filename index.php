@@ -12,7 +12,7 @@
 			echo do_shortcode('[et_pb_section fullwidth="on" specialty="off"][et_pb_fullwidth_header title="<span>'.$title.'</span>" text_orientation="center" content_orientation="center" image_orientation="center" module_class="title-with-sep post_heading"][/et_pb_fullwidth_header][/et_pb_section]'); ?>
 
 			<div id="left-area">
-				<div class="et_pb_column_2_3 full_width">
+				<div class="et_pb_column et_pb_column_2_3 full_width">
 					<div class="et_pb_blog_grid custom_blog" data-columns>
 		<?php
 			if ( have_posts() ) :
@@ -52,10 +52,8 @@
 						endif;
 					} ?>
 						<div class="post-meta-wrapper">
-				<?php if ( ! in_array( $post_format, array( 'link', 'audio', 'quote', 'gallery' ) ) ) : ?>
-					<?php if ( ! in_array( $post_format, array( 'link', 'audio' ) ) ) : ?>
+
 						<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-					<?php endif; ?>
 
 					<?php
 						et_divi_post_meta();
@@ -65,7 +63,6 @@
 						else
 							the_content();
 					?>
-				<?php endif; ?>
 						</div>
 					</article>
 

@@ -14,7 +14,7 @@
 				while ( have_posts() ) : the_post();
 					$post_format = et_pb_post_format(); ?>
 
-					<article id="post-<?php the_ID(); ?>" <?php post_class( 'et_pb_post' ); ?>>
+					<article id="post-<?php the_ID(); ?>" <?php post_class( array('et_pb_post', 'clearfix' ) ); ?>>
 
 				<?php
 					$thumb = '';
@@ -47,10 +47,8 @@
 						endif;
 					} ?>
 						<div class="post-meta-wrapper">
-				<?php if ( ! in_array( $post_format, array( 'link', 'audio', 'quote', 'gallery' ) ) ) : ?>
-					<?php if ( ! in_array( $post_format, array( 'link', 'audio' ) ) ) : ?>
+
 						<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-					<?php endif; ?>
 
 					<?php
 						et_divi_post_meta();
@@ -63,7 +61,7 @@
 					<?php
 						echo sprintf( ' <a href="%1$s" class="more-link" >%2$s</a>' , esc_url( get_permalink() ), __( 'read more', 'et_builder' ) );
 					?>
-				<?php endif; ?>
+
 						</div>
 					</article> <!-- .et_pb_post -->
 			<?php
