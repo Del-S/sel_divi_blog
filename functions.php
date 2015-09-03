@@ -3,6 +3,7 @@
 function el_et_setup_theme() {
     $template_directory = get_stylesheet_directory();
     include( $template_directory . '/includes/widgets.php' );
+    include( $template_directory . '/includes/functions/comments.php' );
 }
 add_action( 'after_setup_theme', 'el_et_setup_theme' );
 
@@ -216,12 +217,12 @@ if ( ! function_exists( 'et_pb_get_comments_popup_link' ) ) :
         $id = get_the_ID();
         $number = get_comments_number( $id );
 
+        // Add facebook comment count
         if( 0 == $number ) {
             $url = get_permalink(get_the_ID());
             $json = json_decode(file_get_contents('https://graph.facebook.com/?ids=' . $url));
             $number = isset($json->$url->comments) ? $json->$url->comments : 0;
         }
-
 
         if ( 0 == $number && !comments_open() && !pings_open() ) return;
 
