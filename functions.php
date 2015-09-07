@@ -21,13 +21,12 @@ function divi_changes() {
 }
 add_action( 'wp_enqueue_scripts', 'divi_changes' );
 
-
 function et_builder_add_main_elements_custom() {
     $template_directory = get_stylesheet_directory();
-    require $template_directory . '/includes/builder/slider-module.php';
+    include( $template_directory . '/includes/builder/slider-module.php' );
 }
 $action_hook = is_admin() ? 'wp_loaded' : 'wp';
-add_action( $action_hook, 'et_builder_add_main_elements_custom' );
+add_action( $action_hook, 'et_builder_add_main_elements_custom' ); 
 
 // Replace link on WP logo
 function put_my_url(){

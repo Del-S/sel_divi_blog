@@ -69,6 +69,8 @@
 			*/?>
 
 			<?php
+                get_template_part('includes/breadcrumbs', 'page');
+
 				$cat_id = get_query_var('cat');
 				echo do_shortcode('[et_pb_section fullwidth="on" specialty="off"][et_pb_fullwidth_header title="<span>'.get_cat_name( $cat_id ).'</span>" text_orientation="center" content_orientation="center" module_class="title-with-sep category_heading"][/et_pb_fullwidth_header][/et_pb_section]');
 

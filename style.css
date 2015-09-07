@@ -52,7 +52,7 @@ h2 {
 #main-footer #footer-widgets .widget_aboutmewidget h4 {
   font-size: 16px;
 }
-.post .entry-content p:first-child:first-letter {
+.post .entry-content > p:first-of-type:first-letter {
   font-size: 70px;
 }
 .search-results .et_pb_post .post-meta-wrapper h2 {
@@ -97,7 +97,7 @@ h6 {
 }
 h1 {
   color: #000000;
-  letter-spacing: .07em;
+  letter-spacing: .02em;
 }
 .et_pb_fullwidth_header {
   padding: 0;
@@ -292,6 +292,24 @@ h1 {
 }
 .format-quote .et_quote_content p {
   display: block !important;
+}
+.et-search-form,
+.nav li ul,
+.et_mobile_menu,
+.footer-widget li:before,
+.et_pb_pricing li:before,
+blockquote,
+.et_pb_pricing li:before {
+  border-color: #ec008c;
+}
+#breadcrumbs-yoast {
+  padding: 5px 5px 5px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #000000;
+  font-size: 12px;
+}
+#breadcrumbs-yoast a {
+  color: #dd7db6;
 }
 /* Header */
 #main-header-block {
@@ -920,7 +938,7 @@ h1 {
 .post #comment-wrap {
   padding-top: 0;
 }
-.post .entry-content p:first-child:first-letter {
+.post .entry-content > p:first-of-type:first-letter {
   float: left;
   padding: 4px 12px 0 0;
   line-height: 56px;

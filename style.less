@@ -36,7 +36,7 @@ h2 { font-size: 26px; }
 }
 .format-gallery .et_pb_slider .et-pb-slider-arrows a:before { font-size: 25px; }
 #main-footer #footer-widgets .widget_aboutmewidget h4 { font-size: 16px; }
-.post .entry-content p:first-child:first-letter { font-size: 70px; }
+.post .entry-content > p:first-of-type:first-letter { font-size: 70px; }
 .search-results .et_pb_post .post-meta-wrapper h2 { font-size: 20px; } 
 
 #comment-wrap .commentlist li .comment-body .comment_postinfo {
@@ -57,7 +57,7 @@ a {  color: @basic-color;
 }
 
 h1, h2, h3, h4, h5, h6 { font-family: 'Oswald', 'Open Sans', Arial, sans-serif; letter-spacing: normal; text-transform: uppercase; }
-h1 { color: @black; letter-spacing: .07em; }
+h1 { color: @black; letter-spacing: .02em; }
 
 .et_pb_fullwidth_header { padding: 0;
     .et_pb_fullwidth_header_container.center .header-content { margin: 0; width: 100%; max-width: 100%; padding: 0; font-family: 'Oswald', 'Open Sans', Arial, sans-serif;
@@ -124,6 +124,12 @@ h1 { color: @black; letter-spacing: .07em; }
 
 .format-link .et_link_content > h2, .format-quote > h2, .format-audio .et_audio_content > h2 { display: none; }
 .format-quote .et_quote_content p { display: block !important; }
+
+.et-search-form, .nav li ul, .et_mobile_menu, .footer-widget li:before, .et_pb_pricing li:before, blockquote, .et_pb_pricing li:before { border-color: @basic-color; }
+
+#breadcrumbs-yoast { padding: 5px 5px 5px 15px; margin-bottom: 15px; border: 1px solid @black; font-size: 12px;
+    a { color: @link-trans; }
+}
 
 /* Header */
 #main-header-block { background-color: @black; padding: 8px 0;
@@ -377,7 +383,7 @@ h1 { color: @black; letter-spacing: .07em; }
     h2 { margin-top: 10px; letter-spacing: .02em }
     #comment-wrap { padding-top: 0; }
     .entry-content {
-        p:first-child:first-letter {
+        & > p:first-of-type:first-letter {
             float: left;
             padding: 4px 12px 0 0;
             line-height: 56px;

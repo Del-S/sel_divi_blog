@@ -11,7 +11,9 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 <div id="main-content">
 	<div class="container">
 		<div id="content-area" class="clearfix">
-			<?php
+            <?php get_template_part('includes/breadcrumbs', 'page'); ?>
+            
+            <?php
 				$postinfo = is_single() ? et_get_option( 'divi_postinfo2' ) : et_get_option( 'divi_postinfo1' );
 				$post_meta = et_pb_postinfo_meta( $postinfo, et_get_option( 'divi_date_format', 'M j, Y' ), esc_html__( '0 comments', 'Divi' ), esc_html__( '1 comment', 'Divi' ), '% ' . esc_html__( 'comments', 'Divi' ) );
 				$post_meta = str_replace('"','\'',$post_meta);

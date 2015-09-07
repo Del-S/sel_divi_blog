@@ -3,6 +3,8 @@
 <div id="main-content">
 	<div class="container">
 		<div id="content-area" class="clearfix">
+            <?php get_template_part('includes/breadcrumbs', 'page'); ?>
+            
 			<?php echo do_shortcode('[et_pb_section fullwidth="on" specialty="off"][et_pb_fullwidth_header title="<span>'.get_the_author().'</span>" text_orientation="center" content_orientation="center" image_orientation="center" module_class="title-with-sep post_heading"][/et_pb_fullwidth_header][/et_pb_section]'); ?>
 			<div id="left-area">
 				<div class="et_pb_column et_pb_column_2_3 full_width">

@@ -3,6 +3,8 @@
 <div id="main-content">
 	<div class="container">
 		<div id="content-area" class="clearfix">
+            <?php get_template_part('includes/breadcrumbs', 'page'); ?>
+            
 			<?php
 			$title = '';
 			if(is_tag()) { $title = single_tag_title("", false); }

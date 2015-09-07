@@ -3,6 +3,8 @@
 <div id="main-content">
 	<div class="container">
 		<div id="content-area" class="clearfix">
+            <?php get_template_part('includes/breadcrumbs', 'page'); ?>
+            
 			<?php
 			$search = sprintf( __( 'Search results for "%s"', $themename ), esc_attr( get_search_query() ) );
 			$search = str_replace('"','\'',$search);
