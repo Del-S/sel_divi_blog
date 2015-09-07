@@ -50,7 +50,7 @@ class ET_Builder_Module_Slider_v2 extends ET_Builder_Module {
         );
 
         $this->main_css_element = '%%order_class%%.et_pb_slider';
-        /*$this->advanced_options = array(
+        $this->advanced_options = array(
             'fonts' => array(
                 'header' => array(
                     'label'    => __( 'Header', 'et_builder' ),
@@ -93,7 +93,7 @@ class ET_Builder_Module_Slider_v2 extends ET_Builder_Module {
                 'label'    => __( 'Slide Active Controller', 'et_builder' ),
                 'selector' => '.et-pb-controllers .et-pb-active-control',
             ),
-        );*/
+        );
     }
 
     function get_fields() {
@@ -379,7 +379,10 @@ class ET_Builder_Module_Slider_v2 extends ET_Builder_Module {
                 );
 
                 $style = $class = '';
-                $background_image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'et-pb-post-main-image-fullwidth' )[0];
+                $background_image_query = wp_get_attachment_image_src( get_post_thumbnail_id(), 'et-pb-post-main-image-fullwidth' );
+                if( is_array($background_image_query) ) {
+                    $background_image = $background_image_query[0];
+                }
 
                 if ('' !== $background_image && 'on' !== $parallax) {
                     $style .= sprintf('background-image:url(%s);',
@@ -498,7 +501,7 @@ class ET_Builder_Module_Slider_v2 extends ET_Builder_Module {
         $class .= 'on' === $auto ? ' et_slider_auto et_slider_speed_' . esc_attr( $auto_speed ) : '';
         $class .= 'on' === $auto_ignore_hover ? ' et_slider_auto_ignore_hover' : '';
         $class .= 'on' === $remove_inner_shadow ? ' et_pb_slider_no_shadow' : '';
-        $class .= 'on' === $show_image_video_mobile ? ' et_pb_slider_show_image' : '';
+        $class .= 'on' === $show_image_video_mobile ? ' et_pb_slider_show_image' : ''; 
 
         $output = sprintf(
             '<div%4$s class="et_pb_module et_pb_slider et_pb_post_slider%1$s%3$s%5$s">

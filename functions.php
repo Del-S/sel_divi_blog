@@ -211,6 +211,41 @@ function last_url_segment($url, $host) {
 }
 /* UTM codes - end */
 
+/* Comment edits */
+function elnino_comment($fields) {
+    unset($fields['url']);
+    return $fields;
+}
+add_filter( 'comment_form_default_fields', 'elnino_comment' );
+
+function remove_textarea($defaults) {
+    $defaults['comment_field'] = " ";
+    $move = $defaults['comment_notes_before'];
+    $defaults['comment_notes_before'] = '';
+    $save = $defaults['comment_notes_after'];
+    $defaults['comment_notes_after'] = $move.$save;
+    return $defaults;
+}
+add_filter( 'comment_form_defaults', 'remove_textarea' ); 
+
+function add_textarea()
+{
+    if(get_comments_number() == 0) { echo '<p class="comment-notes">Příspěvek zatím nebyl okomentován. Buďte první kdo přidá komentář.</p>'; }
+    echo '<p class="comment-form-comment"><label for="comment" style="display: none;">' . _x( 'Comment', 'noun' ) . '</label> <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>';
+}
+add_action( 'comment_form_top', 'add_textarea' );
+
+/* Add something after content (link to comment and share alert) */
+function like_share_alert($content) {
+    if(is_single()) {
+        $content .= '<p class="comment_link"><a href="#respond" class="icon-button paper-icon">Okomentujte tento příspěvek<span class="et-icon"></span></a></p>';
+        $content .= '<p class="share_alert">Sdílejte tento příspěvek pomocí:</p>';
+    }
+    return $content;
+}
+add_filter( 'the_content', 'like_share_alert', 9);
+/* Comments - end */
+
 /* Divi changes */
 if ( ! function_exists( 'et_pb_get_comments_popup_link' ) ) :
     function et_pb_get_comments_popup_link( $zero = false, $one = false, $more = false ){
