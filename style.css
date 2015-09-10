@@ -1132,6 +1132,15 @@ blockquote,
   background: transparent;
   border: 1px solid #000000;
 }
+.comment_text.display_full_text .text_more_show {
+  display: none;
+}
+.comment_text.display_full_text .text_hide {
+  display: inline;
+}
+.comment_text .text_hide {
+  display: none;
+}
 .form-submit input {
   color: #000000;
   -moz-border-radius: 0;

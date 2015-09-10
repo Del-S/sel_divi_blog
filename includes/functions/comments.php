@@ -32,7 +32,30 @@ function et_custom_comments_display($comment, $args, $depth) {
 				<?php endif; ?>
 
 				<div class="comment-content clearfix">
-				<?php comment_text(); ?>
+				<?php $comment_text = get_comment_text();
+                    $length = apply_filters('comment_length');
+                    if($length == null || $length == 0 || $length == '') { $length = 250; }
+                    if( strlen($comment_text) > $length) {
+                        $split[0] = substr($comment_text, 0, $length);
+                        $split[1] = substr($comment_text, $length);
+                        $comment_id = $comment->comment_ID;
+                        $comment_link_text = apply_filters('comment_link_text');
+                        if($comment_link_text == null || $comment_link_text == '') { $comment_link_text = 'Show more'; }
+                        
+                        $output = '<div class="comment_text id_'.$comment_id.'">
+                            <p>'.$split[0].'
+                                <span class="text_more_show">...</span>
+                                <span class="text_hide">'.$split[1].'</span>
+                            </p>
+                            <span class="comment_hidden"><a class="see_more_link" href="#" role="button">'.$comment_link_text.'</a></span>
+                        </div>';
+                    } else {
+                        $output = '<div class="comment_text id_'.$comment_id.'">
+                            <p>'.$comment_text.'</p>
+                        </div>';
+                    }
+                    echo $output;
+                ?>
 				</div> <!-- end comment-content-->
 			</div> <!-- end comment_area-->
 		</article> <!-- .comment-body -->

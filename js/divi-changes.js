@@ -31,4 +31,10 @@ jQuery(document).ready(function($) {
             salvattore['recreate_columns']($(".hide-text")[0]);
         }
     });
+    
+    $(".comment_text .see_more_link").on('click', function(e) {
+        e.preventDefault();
+        $(this).parents( "div.comment_text" ).addClass('display_full_text');
+        $(this).hide();
+    });
 });

@@ -323,4 +323,16 @@ if ( ! function_exists( 'et_get_first_video' ) ) :
         return ( '' !== $first_video ) ? $first_video : false;
     }
 endif;
+
+// Shorten comment for long comments
+function comment_length(){
+	return 250; 
+}
+add_filter('comment_length', 'comment_length');
+
+// Link text for shortened comments
+function comment_link_text(){
+	return 'Zobrazit více'; 
+}
+add_filter('comment_link_text', 'comment_link_text');
 ?>

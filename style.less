@@ -480,6 +480,14 @@ h1 { color: @black; letter-spacing: .02em; }
     & textarea, & input[type="text"] { color: @black; background: transparent; border: 1px solid @black; }
 }
 
+.comment_text {
+    &.display_full_text {
+        .text_more_show { display: none; }
+        .text_hide { display: inline;  }
+    }
+    .text_hide { display: none; }
+}
+
 .form-submit { 
     input { color: @black; -moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0;
         &:hover { color: @link-hover; border: 2px solid @link-hover; }
