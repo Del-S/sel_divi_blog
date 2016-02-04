@@ -3,8 +3,32 @@
 function el_et_setup_theme() {
     $template_directory = get_stylesheet_directory();
     include( $template_directory . '/includes/widgets.php' );
+    include( $template_directory . '/includes/functions/comments.php' );
 }
 add_action( 'after_setup_theme', 'el_et_setup_theme' );
+
+function divi_changes() {
+    if (!is_admin()) {
+        wp_register_script( 'js-divi-changes', get_stylesheet_directory_uri().'/js/divi-changes.js' , array('jquery'), '0.1', true );
+        //wp_localize_script( 'js-divi-changes', 'data', $data );
+        wp_enqueue_script( 'js-divi-changes' );
+        if(is_author() || is_tag() || is_date() || is_tax() || is_post_type_archive()) {
+            $theme_version = et_get_theme_version();
+            wp_register_script( 'js-custom-salvattore', get_template_directory_uri() . '/js/salvattore.min.js', array(), $theme_version, true );
+            wp_enqueue_script( 'js-custom-salvattore' );
+        }
+    }
+}
+add_action( 'wp_enqueue_scripts', 'divi_changes' );
+
+/* Add custom modules to DIVI (maybe try find another way how to hook custom modules) */
+if ( ! function_exists( 'et_builder_add_main_elements' ) ) :
+function et_builder_add_main_elements() {
+	require get_template_directory() . '/includes/builder/main-structure-elements.php';
+	require get_template_directory() . '/includes/builder/main-modules.php';
+    require get_stylesheet_directory() . '/includes/builder/slider-module.php';
+}
+endif;
 
 // Replace link on WP logo
 function put_my_url(){
@@ -40,7 +64,7 @@ function change_wp_default_email($content_type) {
 // Add Google Fonts as we need
 function google_fonts(){
     wp_enqueue_style( 'google_font_1', 'http://fonts.googleapis.com/css?family=Open+Sans:400,700,300&subset=latin,latin-ext' );
-    wp_enqueue_style( 'google_font_2', 'http://fonts.googleapis.com/css?family=Oswald%3A400%7CLato&amp;subset=latin&amp;ver=1430629811');
+    wp_enqueue_style( 'google_font_2', 'http://fonts.googleapis.com/css?family=Oswald:400,300,700&subset=latin,latin-ext');
 	//wp_enqueue_style( 'google_font_2', 'http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&subset=latin,latin-ext' );
 }
 add_action( 'wp_enqueue_scripts', 'google_fonts', 9 );
@@ -71,6 +95,17 @@ function redirect_single_post() {
     }
 }
 
+// Remove HomePage from search (change on live !!!!!!)
+add_action('pre_get_posts','exclude_posts_from_search');
+function exclude_posts_from_search( $query ){
+
+    if( $query->is_main_query() && is_search() ){
+        $post_ids = array(2874);
+        $query->set('post__not_in', $post_ids);
+    }
+
+}
+
 /* UTM codes for outbound links js */   
 add_filter('last_url_segment', 'last_url_segment', 10, 2);
 
@@ -91,7 +126,7 @@ function utm_codes() {
         if(!empty($domains)) { 
             $data = array( 'domains' => json_encode($domains), 'utm_data' => json_encode($utm) );
 
-            wp_register_script( 'js-outbound-links-utm', get_stylesheet_directory_uri().'/js/outbound-links.js' , array('jquery'), '1.0.0', true );
+            wp_register_script( 'js-outbound-links-utm', get_stylesheet_directory_uri().'/js/outbound-links.js' , array('jquery'), '1.2', true );
             wp_localize_script( 'js-outbound-links-utm', 'data', $data );
             wp_enqueue_script( 'js-outbound-links-utm' );
         }
@@ -177,5 +212,129 @@ function last_url_segment($url, $host) {
 }
 /* UTM codes - end */
 
+/* Comment edits */
+function elnino_comment($fields) {
+    unset($fields['url']);
+    return $fields;
+}
+add_filter( 'comment_form_default_fields', 'elnino_comment' );
+
+function remove_textarea($defaults) {
+    $defaults['comment_field'] = " ";
+    $move = $defaults['comment_notes_before'];
+    $defaults['comment_notes_before'] = '';
+    $save = $defaults['comment_notes_after'];
+    $defaults['comment_notes_after'] = $move.$save;
+    return $defaults;
+}
+add_filter( 'comment_form_defaults', 'remove_textarea' ); 
+
+function add_textarea()
+{
+    if(get_comments_number() == 0) { echo '<p class="comment-notes">Příspěvek zatím nebyl okomentován. Buďte první kdo přidá komentář.</p>'; }
+    echo '<p class="comment-form-comment"><label for="comment" style="display: none;">' . _x( 'Comment', 'noun' ) . '</label> <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>';
+}
+add_action( 'comment_form_top', 'add_textarea' );
+
+/* Add something after content (link to comment and share alert) */
+function like_share_alert($content) {
+    if(is_single()) {
+        $content .= '<p class="comment_link"><a href="#respond" class="icon-button paper-icon">Okomentujte tento příspěvek<span class="et-icon"></span></a></p>';
+        $content .= '<p class="share_alert">Sdílejte tento příspěvek pomocí:</p>';
+    }
+    return $content;
+}
+add_filter( 'the_content', 'like_share_alert', 9);
+/* Comments - end */
+
 /* Divi changes */
+if ( ! function_exists( 'et_pb_get_comments_popup_link' ) ) :
+    function et_pb_get_comments_popup_link( $zero = false, $one = false, $more = false ){
+        $id = get_the_ID();
+        $number = get_comments_number( $id );
+
+        // Add facebook comment count
+        if( 0 == $number ) {
+            $url = get_permalink(get_the_ID());
+            $json = json_decode(file_get_contents('https://graph.facebook.com/?ids=' . $url));
+            $number = isset($json->$url->comments) ? $json->$url->comments : 0;
+        }
+
+        if ( 0 == $number && !comments_open() && !pings_open() ) return;
+
+        if ( $number > 1 )
+            $output = str_replace( '%', number_format_i18n( $number ), ( false === $more ) ? __( '% Comments', $themename ) : $more );
+        elseif ( $number == 0 )
+            $output = ( false === $zero ) ? __( 'No Comments', 'et_builder' ) : $zero;
+        else // must be one
+            $output = ( false === $one ) ? __( '1 Comment', 'et_builder' ) : $one;
+
+        return '<span class="comments-number">' . '<a href="' . esc_url( get_permalink() . '#respond' ) . '">' . apply_filters( 'comments_number', $output, $number ) . '</a>' . '</span>';
+    }
+endif;
+
+if ( ! function_exists( 'et_get_first_video' ) ) :
+    function et_get_first_video() {
+        $first_video  = '';
+        $custom_fields = get_post_custom();
+        $video_width  = (int) apply_filters( 'et_blog_video_width', 1080 );
+        $video_height = (int) apply_filters( 'et_blog_video_height', 630 );
+
+        foreach ( $custom_fields as $key => $custom_field ) {
+            if ( 0 !== strpos( $key, '_oembed_' ) ) {
+                continue;
+            }
+
+            $first_video = $custom_field[0];
+
+            $first_video = preg_replace( '/<embed /', '<embed wmode="transparent" ', $first_video );
+            $first_video = preg_replace( '/<\/object>/','<param name="wmode" value="transparent" /></object>', $first_video );
+
+            $first_video = preg_replace( "/width=\"[0-9]*\"/", "width={$video_width}", $first_video );
+            $first_video = preg_replace( "/height=\"[0-9]*\"/", "height={$video_height}", $first_video );
+
+            break;
+        }
+
+        if ($first_video == '{{unknown}}') { $first_video = ''; }
+
+        if ( '' === $first_video && has_shortcode( get_the_content(), 'video' )  ) {
+            $regex = get_shortcode_regex();
+            preg_match( "/{$regex}/s", get_the_content(), $match );
+
+            $first_video = preg_replace( "/width=\"[0-9]*\"/", "width=\"{$video_width}\"", $match[0] );
+            $first_video = preg_replace( "/height=\"[0-9]*\"/", "height=\"{$video_height}\"", $first_video );
+
+            add_filter( 'the_content', 'et_delete_post_video' );
+
+            $first_video = do_shortcode( et_pb_fix_shortcodes( $first_video ) );
+        }
+
+        if ( '' === $first_video && has_shortcode( get_the_content(), 'youtube' )  ) {
+            $regex = get_shortcode_regex();
+            preg_match( "/{$regex}/s", get_the_content(), $match );
+
+            $first_video = preg_replace( "/width=\"[0-9]*\"/", "width=\"{$video_width}\"", $match[0] );
+            $first_video = preg_replace( "/height=\"[0-9]*\"/", "height=\"{$video_height}\"", $first_video );
+
+            add_filter( 'the_content', 'et_delete_post_video' );
+
+            $first_video = do_shortcode( et_pb_fix_shortcodes( $first_video ) );
+        }
+
+        return ( '' !== $first_video ) ? $first_video : false;
+    }
+endif;
+
+// Shorten comment for long comments
+function comment_length(){
+	return 250; 
+}
+add_filter('comment_length', 'comment_length');
+
+// Link text for shortened comments
+function comment_link_text(){
+	return 'Zobrazit více'; 
+}
+add_filter('comment_link_text', 'comment_link_text');
 ?>

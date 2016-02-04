@@ -1,0 +1,76 @@
+/* Footer */
+#main-footer { 
+    background-color: @footer-color; 
+    margin-top: 20px;
+    #footer-widgets { 
+        padding: 20px 0;
+        .footer-widget:first-child { 
+            border-right: 1px dotted @footer-border;
+        }
+        .footer-widget { 
+            width: 45%; 
+            margin-right: 0; 
+            padding: 0 20px; 
+            margin: 30px 0;
+            .fwidget { 
+                margin-bottom: 10px; 
+            }
+            h4 { 
+                color: @footer-header; 
+                text-align: @align-center; 
+                text-transform: @text-transform-uppercase;
+            }
+            img#about-image { 
+                margin: 7px 15px 8px 0; 
+            }
+            .et-social-icons { 
+                float: none; 
+                margin: 0 auto; 
+                text-align: @align-center; 
+            }
+            li { 
+                padding: 0;
+                display: inline-block;
+                &:before { 
+                    content: none; 
+                }
+                a:hover { 
+                    color: @basic-color; 
+                }
+            }
+            .widget_nav_menu li { 
+                padding-right: 18px; 
+                text-decoration: @decoration; 
+            }
+            .jetpack-image-container {
+                .wp-caption { 
+                    background-color: inherit; 
+                    border: @border-none; padding: 0;
+                    margin-left: 0;
+                    margin-top: 0;
+                }
+                .wp-caption-text { 
+                    display: none; 
+                }
+            }
+            .widget_aboutmewidget { 
+                float: none; 
+            }
+            #et-footer-social { 
+                margin-top: 30px; 
+            }
+        }
+    }
+
+    #footer-bottom { 
+        background-color: @black; 
+        padding: 8px 0 0 0;
+        #footer-info { 
+            color: @white; 
+            padding: 7px 0 0 0; 
+        }
+        #el-logo { 
+            float: right;
+        }
+    }
+}
