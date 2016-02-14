@@ -1,8 +1,8 @@
 /*
 Theme Name: Selfino DIVI
 Theme URI: http://www.selfino.cz/
-Version: 0.5
-Description: Selfino; ver. 08/2015
+Version: 0.6
+Description: Selfino; ver. 02/2016
 Author: Webová dílna Idefixx
 Author URI: http://parfemy-elnino.cz
 Template: divi
@@ -10,7 +10,8 @@ Template: divi
 
 @import url("../divi/style.css");
 
-//*** Variables ***//
+///***** Variables *****///
+/* Global */
 // Colors
 @black: black;
 @white: white;
@@ -39,6 +40,13 @@ Template: divi
 @text-shadow-reset: none; 
 @align-center: center;
 
+// Borders
+@border1: 1px solid @black;
+@border2: 2px solid @black;
+@border3: 3px solid @black;
+@border-none: none;
+
+/* Single Less files */
 // Font-size
 @reset: 0;
 @h1: 42px;
@@ -61,21 +69,28 @@ Template: divi
 @comment-date: 14px;
 @comment-reply: 18px;
 
-@border1: 1px solid @black;
-@border2: 2px solid @black;
-@border3: 3px solid @black;
-@border-none: none;
+// Common
+@default-text-color: #444;
+@default-page-with-px: 1080px;
+@slider-arrows-size: 60px;
 
+///***** Imports *****///
+// TODO (last): double check parametrize
 @import url("./less/mixins.less");
 
 @import url("./less/font_sizes.less");
 
+// parametrize done
 @import url("./less/common.less");
 
+// TODO: parametrize
 @import url("./less/header.less");
 
+// TODO: parametrize, has font-sizes - fix it
 @import url("./less/content.less");
 
+// TODO: parametrize, extend
 @import url("./less/footer.less");
 
+// TODO: parametrize, extend
 @import url("./less/media.less");
