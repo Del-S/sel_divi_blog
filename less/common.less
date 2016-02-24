@@ -1,7 +1,7 @@
 /* Common styles applied to multiple elements */
 // Globals
 body { 
-    color: @default-text-color; 
+    color: @c-default-text-color; 
     line-height: 1.5em;
     .broken_link, a.broken_link { text-decoration: @decoration-reset; }
 }
@@ -26,7 +26,7 @@ h1 {
 .et_pb_section { padding: 0; }
 
 // Width of page
-.container, .et_pb_row, .et_pb_fullwidth_header .et_pb_fullwidth_header_container { width: @default-page-with-px; }
+.container, .et_pb_row, .et_pb_fullwidth_header .et_pb_fullwidth_header_container { width: @c-default-page-with-px; }
 
 // Fix for fixed menu
 .et_non_fixed_nav.et_transparent_nav.et_show_nav #page-container, .et_fixed_nav.et_show_nav #page-container { padding-top: 0; }
@@ -73,9 +73,9 @@ h1 {
         a { 
             background-color: @white; 
             color: @slider-arrows !important; 
-            width: @slider-arrows-size; 
-            height: @slider-arrows-size; 
-            .border-radius(@slider-arrows-size);
+            width: @c-slider-arrows-size; 
+            height: @c-slider-arrows-size; 
+            .border-radius(@c-slider-arrows-size);
             .box-shadow(~"0 0 5px rgba(0,0,0,0.1)");
             &.et-pb-arrow-prev:before, &.et-pb-arrow-next:before { 
                 margin: 11px; 

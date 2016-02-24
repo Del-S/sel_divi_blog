@@ -27,6 +27,8 @@ Template: divi
 @footer-color: #242628;
 @footer-border: #585b61;
 @footer-header: #eb058c;
+@post-header-color: #9d9d9d;
+@comment-border-color: #ccc;
 
 // Text
 @font: 'Oswald', 'Open Sans', Arial, sans-serif;
@@ -39,6 +41,7 @@ Template: divi
 @text-shadow: 2px 2px 0px @black;
 @text-shadow-reset: none; 
 @align-center: center;
+@text-capitalize: capitalize;
 
 // Borders
 @border1: 1px solid @black;
@@ -70,27 +73,50 @@ Template: divi
 @comment-reply: 18px;
 
 // Common
-@default-text-color: #444;
-@default-page-with-px: 1080px;
-@slider-arrows-size: 60px;
+@c-default-text-color: #444;
+@c-default-page-with-px: 1080px;
+@c-slider-arrows-size: 60px;
+
+// Header
+@h-search-button-size: 17px;
+@h-search-input-length: 190px;
+@h-logo-area-height: 207px;
+@h-logo-area-padding: 40px;
+
+// Content
+@co-slide-min-height: 220px;
+@co-slider-height: 230px;
+@co-gallery-arrow-size: 35px;
+@co-gallery-arrow-left-right: 15px;
+@co-sidebar-widget-margin-padding-bottom: 30px;
+@co-post-social-margin-padding: 30px 0 0 0;
+@co-post-related-margin-padding: 30px 0;
+@co-search-margin-padding: 30px;
+@co-search-container-width: 320px;
+@co-comment-margin-padding: 30px;
+
+// Media
+@m-font-more-button: 18px;
+@m-font-more-button-after: 29px;
+@m-font-commentform: 14px;
+@m-font-column-h2-h3: 20px;
+@m-font-post-portfolio-title: 16px;
+@m-font-wp-rp-title: 12px;
+@m-1200-blog-full-width: 100%;
 
 ///***** Imports *****///
+// 30 min
 // TODO (last): double check parametrize
 @import url("./less/mixins.less");
 
 @import url("./less/font_sizes.less");
 
-// parametrize done
 @import url("./less/common.less");
 
-// TODO: parametrize
 @import url("./less/header.less");
 
-// TODO: parametrize, has font-sizes - fix it
 @import url("./less/content.less");
 
-// TODO: parametrize, extend
 @import url("./less/footer.less");
 
-// TODO: parametrize, extend
 @import url("./less/media.less");

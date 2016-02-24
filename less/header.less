@@ -30,22 +30,16 @@
         margin-top: 5px; 
         width: auto;
         #et_search_icon_el { 
-            position: absolute; 
-            height: 17px; 
-            width: 17px; 
-            background: none; 
-            margin-top: 0; 
-            padding: 0; 
+            position: absolute;
             right: 10px; 
             top: 9px; 
+            height: @h-search-button-size; 
+            width: @h-search-button-size; 
+            margin-top: 0; 
+            padding: 0; 
             cursor: pointer; 
             color: @link-darker2;
             font-family: 'ETmodules'; 
-            font-style: normal; 
-            font-weight: normal; 
-            font-variant: normal; 
-            text-transform: @text-transform-reset; 
-            line-height: 1; 
             -webkit-font-smoothing: antialiased; 
             -moz-osx-font-smoothing: grayscale; 
         }
@@ -54,13 +48,11 @@
             border: @border-none; 
             padding: 0; 
             display: inline-block !important; 
-            box-shadow: none; 
             .box-shadow(none);
             input { 
-                width: 190px; 
-                padding: 10px; 
-                padding-right: 30px; 
-                position: static; 
+                position: static;
+                width: @h-search-input-length; 
+                padding: 10px 30px 10px 10px;  
                 background-color: @white; 
             }
         }
@@ -73,13 +65,13 @@
     .pic-right { 
         background: url(./images/cmoud_pravy.png) no-repeat right top; 
         width: 50%; 
-        height: 207px; 
+        height: @h-logo-area-height; 
         float: right; 
     }
     .pic-left { 
         background: url(./images/cmoud_levy.png) no-repeat; 
         width: 50%; 
-        height: 207px; 
+        height: @h-logo-area-height; 
     }
     .logo-container { 
         position: absolute; 
@@ -92,7 +84,7 @@
         #logo-area { 
             margin: 0 auto; 
             text-align: @align-center; 
-            padding: 40px 0 40px; 
+            padding: @h-logo-area-padding 0 @h-logo-area-padding; 
         }
     }
 }
@@ -114,7 +106,7 @@
                 display: block; 
                 float: left; 
                 width: 6px; 
-                color: @link-lighter 
+                color: @link-lighter;
             }
             &.menu-item-has-children a { margin-right: 8px; }
             & a { 
