@@ -1,23 +1,26 @@
 jQuery(document).ready(function($) {
     var domains = $.parseJSON(data.domains);
     var utm = $.parseJSON(data.utm_data);
-    var utm_string = '?';
     
+    $('a:not([href*="' + document.domain + '"],[href^="#"],[href^="mailto:"])').each(function() {
+    var url = $(this).attr('href');
+    if(typeof url == 'undefined') { return; }
+    if (url.indexOf("?") >= 0) {
+        utm_string = '&';
+    } else {
+        var utm_string = '?';
+    }
+        
     $.each( utm, function(k,v) {
         utm_string += k+'='+v+'&';
     });
     utm_string = utm_string.slice(0, -1);
     
-    $('a:not([href*="' + document.domain + '"],[href^="#"],[href^="mailto:"])').each(function() {
-        var url = $(this).attr('href');
-        var check = url.slice(-1);
-	if(check != "/") { url = url+"/"; } // check if url ends with /
-        if(typeof url == 'undefined') { return; }
-        /* Remove existing UTM */
-        var utm_index = url.search("utm_source");
-        /* if(utm_index != -1) { utm_index -= 1; url = url.slice(0, utm_index); } */
+    /* Remove existing UTM */
+    var utm_index = url.search("utm_source");
+    /* if(utm_index != -1) { utm_index -= 1; url = url.slice(0, utm_index); } */
         
-        if(utm_index == -1) { // By this code you can block adding (choose one removing or block adding for existing) */
+    if(utm_index == -1) { // By this code you can block adding (choose one removing or block adding for existing) */
         var host = $('<a>').prop('href', url).prop('hostname');
         var domain = host.replace('www.','');
         var utm_add = false;
@@ -31,6 +34,6 @@ jQuery(document).ready(function($) {
             var changed_url = url+utm_string;
             $(this).attr('href', changed_url);
         }
-        } // end of block if
+    } // end of block if
     });
 });
